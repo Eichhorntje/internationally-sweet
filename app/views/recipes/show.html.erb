@@ -12,7 +12,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= image_tag(@recipe.picture_url, width: 600) if @recipe.picture.present? %>
+  <%= image_tag(@recipe.picture_url, width: 300) if @recipe.picture.present? %>
 </p>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |

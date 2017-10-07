@@ -3,24 +3,16 @@
 <h1>Recipes</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @recipes.each do |recipe| %>
+    <% @recipes.each_slice(2) do |recipe1,recipe2| %>
       <tr>
-        <td><%= recipe.name %></td>
-        <td><%= recipe.country %></td>
-        <td><%= recipe.picture %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to(recipe1) do %>
+            <%= image_tag(recipe1.picture_url, width: 150, alt: recipe1.name) if recipe1.picture.present? %>
+            <% end %> </td>
+            <td><%= link_to(recipe2) do %>
+              <%= image_tag(recipe2.picture_url, width: 150, alt: recipe2.name) if recipe2.picture.present? %>
+              <% end %> </td>
       </tr>
     <% end %>
   </tbody>
